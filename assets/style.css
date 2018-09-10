@@ -1,13 +1,14 @@
 html,
 body {
-  height: 75%;
+height: 500px;
 }
 html {
   text-align: center;
   background-color: lightsalmon;
+  max-height: 75%
 }
 #wrapper {
-  width: 960px;
+  width: 1100px;
   min-height: 80%;
   box-sizing: border-box;
   padding: 5% 0;
@@ -58,8 +59,19 @@ button:hover {
   border: 1px solid blue;
 }
 #time{
-    color: darkgrey;
-    font-size: 40px;
-    margin-top: 10%;
+    color: red;
+    font-size: 15px;
 
+}
+li{
+    font-weight: bold;
+    line-height: 45px;
+    font-size: 18px;
+}
+span:hover{
+    background-color:grey;
+   
+}
+span{
+    color:white;
 }
