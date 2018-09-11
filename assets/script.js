@@ -50,22 +50,21 @@ $("document").ready(function () {
 
     // timer for the question form when user clicks the start button
     $("#start").on("click", function () {
-        var number = 121;
+        var number = 61;
         var intervalId;
         var correct = 0;
         var wrong = 0;
 
-        function questionCounter (){
-            correctAnswer();
-            wrongAnswer();
+        function correctAnswer() {
+            correct++;
+            $("#correct").html(correct)
         }
-        questionCounter();
-        function correctAnswer () {
-        $("#correct").html(0);
-    }
-        function wrongAnswer () {
-        $("#wrong").html(0);
-    }
+
+        function wrongAnswer() {
+            wrong++;
+            $("#wrong").html(wrong)
+        };
+
         function setCountDown() {
             clearInterval(intervalId);
             intervalId = setInterval(countdown, 1000);
@@ -91,7 +90,6 @@ $("document").ready(function () {
         $("p").show();
 
 
-
         // gives unique ID's to the span and list items
         $("span").on("click", function () {
             var liIndex = (parseInt(this.parentElement.id) / 10) - 1;
@@ -99,17 +97,15 @@ $("document").ready(function () {
             var liid = parseInt(this.parentElement.id);
             var spanIndex = parseInt(this.id) - liid - 1;
 
-            //   console.log("liIndex = " + liIndex);
-            //   console.log("spanIndex " + spanIndex);
-            //   console.log("gameQuestions = " + gameQuestions[liIndex]);
-            //   console.log("choices = " + gameQuestions[liIndex].choices[spanIndex]);
+
 
             if (spanIndex === gameQuestions[liIndex].correctAnswer) {
-                alert("correct answer " + gameQuestions[liIndex].choices[spanIndex]);
-               gameQuestions.choices.hide();
+                correctAnswer();
+                console.log("Correct");
 
             } else {
                 alert("wrong, correct answer is " + gameQuestions[liIndex].choices[gameQuestions[liIndex].correctAnswer]);
+                wrongAnswer();
 
             }
 
@@ -121,7 +117,7 @@ function createUlHtml(gameQuestions) {
     var liid = 0;
     var spanid = liid;
     var html = "";
-    //for loop that adds the questions to the page 
+    //for loop that adds ids to the list items and span tags 
     for (i = 0; i < gameQuestions.length; i++) {
         liid = liid + 10;
         spanid = liid + 1;
