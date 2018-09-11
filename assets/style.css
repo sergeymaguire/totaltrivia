@@ -58,9 +58,9 @@ button:hover {
   background: rgb(33, 187, 43);
   border: 1px solid blue;
 }
-#time{
+#time,p{
     color: red;
-    font-size: 15px;
+    font-size: 30px;
 
 }
 li{
@@ -78,5 +78,8 @@ span{
     color:white;
 }
 #correct, #wrong{
+  display: none;
+}
+p{
   display: none;
 }

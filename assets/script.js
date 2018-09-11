@@ -46,6 +46,7 @@
   }];
 
   $("document").ready(function () {
+
       // timer for the question form when user clicks the start button
       $("#start").on("click", function () {
           var number = 1201;
@@ -68,33 +69,51 @@
 
 
           $("#start").hide();
-          var liid = 0;
-          var spanid = liid;
-          //for loop that adds the questions to the page 
-          for (i = 0; i < gameQuestions.length; i++) {
-              liid = liid + 10;
-              spanid = liid + 1;
-              var html = "<li id=" + liid + ">" + gameQuestions[i].question +
-                  "<span id=" + spanid++ + ">" + gameQuestions[i].choices[0] + "</span>,  " +
-                  "<span id=" + spanid++ + ">" + gameQuestions[i].choices[1] + "</span>,  " +
-                  "<span id=" + spanid++ + ">" + gameQuestions[i].choices[2] + "</span>, " +
-                  "<span id=" + spanid + ">" + gameQuestions[i].choices[3] + "</span></li> ";
-              $("#quizarea").append(html);
-              // shows the number of correct and wrong answers 
-              $("#correct").show();
-              $("#wrong").show();
-          }
+
+          createUlHtml();
 
 
           // gives unique ID's to the span and list items
           $("span").on("click", function () {
-              var liid = (parseInt(this.parentElement.id) / 10) - 1;
-              var spanid = (parseInt(this.id) / 10) - 1;
-              console.log("liid = " + liid);
+              var liIndex = (parseInt(this.parentElement.id) / 10) - 1;
 
-              console.log($(this).text());
-              var i = (parseInt(this.id) - 10);
-              console.log("i = " + i);
+              var liid = parseInt(this.parentElement.id);
+              var spanIndex = parseInt(this.id) - liid - 1;
+
+              //   console.log("liIndex = " + liIndex);
+              //   console.log("spanIndex " + spanIndex);
+              //   console.log("gameQuestions = " + gameQuestions[liIndex]);
+              //   console.log("choices = " + gameQuestions[liIndex].choices[spanIndex]);
+
+              if (spanIndex === gameQuestions[liIndex].correctAnswer) {
+                  alert("correct answer " + gameQuestions[liIndex].choices[spanIndex]);
+              } else {
+                  alert("wrong, correct answer is " + gameQuestions[liIndex].choices[gameQuestions[liIndex].correctAnswer]);
+
+              }
+
           });
       });
   });
+
+  function createUlHtml() {
+    var liid = 0;
+    var spanid = liid;
+    var html = "";
+    //for loop that adds the questions to the page 
+    for (i = 0; i < gameQuestions.length; i++) {
+        liid = liid + 10;
+        spanid = liid + 1;
+        html = html + "<li id=" + liid + ">" + gameQuestions[i].question +
+            "<span id=" + spanid++ + ">" + gameQuestions[i].choices[0] + "</span>,  " +
+            "<span id=" + spanid++ + ">" + gameQuestions[i].choices[1] + "</span>,  " +
+            "<span id=" + spanid++ + ">" + gameQuestions[i].choices[2] + "</span>, " +
+            "<span id=" + spanid + ">" + gameQuestions[i].choices[3] + "</span></li> ";
+    }
+    $("#quizarea").append(html);
+        // shows the number of correct and wrong answers 
+        $("#correct").show();
+        $("#wrong").show();
+        $("p").show();
+
+}
