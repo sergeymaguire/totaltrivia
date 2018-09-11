@@ -33,7 +33,7 @@
       correctAnswer: 3
   }, {
       question: 'What was the first console game that allowed the game to be saved?',
-      choices: ['Zelda', 'Legend of Zelda', 'Zelda Ocarina of Time', 'Zelda Twilight Princess'],
+      choices: ['Zelda', 'Legend of Zelda', 'Ocarina of Time', 'Twilight Princess'],
       correctAnswer: 1
   }, {
       question: 'What is the heaviest naturally occurring element found on Earth?',
@@ -46,8 +46,7 @@
   }];
 
   $("document").ready(function () {
-
-
+      // timer for the question form when user clicks the start button
       $("#start").on("click", function () {
           var number = 1201;
           var intervalId;
@@ -56,6 +55,7 @@
               clearInterval(intervalId);
               intervalId = setInterval(countdown, 1000);
           }
+
           function countdown() {
               number--;
               $("#time").html("<h2>" + "Time Left:" + number + "</h2>");
@@ -70,44 +70,31 @@
           $("#start").hide();
           var liid = 0;
           var spanid = liid;
+          //for loop that adds the questions to the page 
           for (i = 0; i < gameQuestions.length; i++) {
               liid = liid + 10;
               spanid = liid + 1;
-              var html = "<li id=" + liid + ">" + gameQuestions[i].question 
-              + "<span id=" + spanid++ + ">" + gameQuestions[i].choices[0]+ "</span>,  "
-              +"<span id=" + spanid++ + ">" + gameQuestions[i].choices[1] + "</span>,  "
-              +"<span id=" + spanid++ + ">" + gameQuestions[i].choices[2] + "</span>, "
-              +"<span id=" + spanid + ">" + gameQuestions[i].choices[3] + "</span></li> ";
+              var html = "<li id=" + liid + ">" + gameQuestions[i].question +
+                  "<span id=" + spanid++ + ">" + gameQuestions[i].choices[0] + "</span>,  " +
+                  "<span id=" + spanid++ + ">" + gameQuestions[i].choices[1] + "</span>,  " +
+                  "<span id=" + spanid++ + ">" + gameQuestions[i].choices[2] + "</span>, " +
+                  "<span id=" + spanid + ">" + gameQuestions[i].choices[3] + "</span></li> ";
               $("#quizarea").append(html);
-            //   $("#quizarea").append("<li id=" + liid + ">" + gameQuestions[i].question );
-            //   $("#quizarea").append("<span id=" + spanid++ + ">" + gameQuestions[i].choices[0]+ "</span>, ");
-            //    $("#quizarea").append("<span id=" + spanid++ + ">" + gameQuestions[i].choices[1] + "</span>, ");
-            //    $("#quizarea").append("<span id=" + spanid++ + ">" + gameQuestions[i].choices[2] + "</span>, ");
-            //    $("#quizarea").append("<span id=" + spanid + ">" + gameQuestions[i].choices[3] + "</span></li>");
+              // shows the number of correct and wrong answers 
+              $("#correct").show();
+              $("#wrong").show();
           }
-          $( "span" ).on( "click", function() {
-            var liid = (parseInt(this.parentElement.id) /10) - 1; 
-            var spanid = (parseInt(this.id) - 10); 
-            console.log("liid = " + liid);
-          
-            console.log( $( this ).text() );
-            var i = (parseInt(this.id) - 10);
-            console.log("i = " + i);
-            
+
+
+          // gives unique ID's to the span and list items
+          $("span").on("click", function () {
+              var liid = (parseInt(this.parentElement.id) / 10) - 1;
+              var spanid = (parseInt(this.id) / 10) - 1;
+              console.log("liid = " + liid);
+
+              console.log($(this).text());
+              var i = (parseInt(this.id) - 10);
+              console.log("i = " + i);
           });
-
       });
-
-
-
-        // var myVar = setInterval(setColor, 300);
-
-        // function setColor() {
-        //     var x = document.body;
-        //     x.style.backgroundColor = x.style.backgroundColor == "yellow" ? "pink" : "yellow";
-        // }
-
-        // function stopColor() {
-        //     clearInterval(myVar);
-        // }
   });

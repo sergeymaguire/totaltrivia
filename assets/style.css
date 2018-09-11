@@ -70,8 +70,13 @@ li{
 }
 span:hover{
     background-color:grey;
+    font-size: 120%;
+    cursor: pointer;
    
 }
 span{
     color:white;
+}
+#correct, #wrong{
+  display: none;
 }
