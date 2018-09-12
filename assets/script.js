@@ -102,13 +102,13 @@ $("document").ready(function () {
             if (spanIndex === gameQuestions[liIndex].correctAnswer) {
                 correctAnswer();
                 alert("correct");
-                $("#10").hide();
+             
                 
 
             } else {
                 alert("wrong, correct answer is " + gameQuestions[liIndex].choices[gameQuestions[liIndex].correctAnswer]);
                 wrongAnswer();
-                $("#20").hide();
+             
 
             }
 
