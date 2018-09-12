@@ -50,7 +50,7 @@ $("document").ready(function () {
 
     // timer for the question form when user clicks the start button
     $("#start").on("click", function () {
-        var number = 321654621321;
+        var number = 60;
         var intervalId;
         var correct = 0;
         var wrong = 0;
