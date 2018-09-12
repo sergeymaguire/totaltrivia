@@ -79,39 +79,30 @@ $("document").ready(function () {
             }
         }
         setCountDown();
-
-
         $("#start").hide();
-
         var html = createUlHtml(gameQuestions);
         $("#quizarea").append(html);
         $("#correct").show();
         $("#wrong").show();
         $("p").show();
-
-
         // gives unique ID's to the span and list items
         $("span").on("click", function () {
             var liIndex = (parseInt(this.parentElement.id) / 10) - 1;
 
             var liid = parseInt(this.parentElement.id);
             var spanIndex = parseInt(this.id) - liid - 1;
-
-
-
+            if (gameQuestions[liIndex].answered)
+                alert("already answered");
+                
+            else
             if (spanIndex === gameQuestions[liIndex].correctAnswer) {
                 correctAnswer();
                 alert("correct");
-             
-                
-
             } else {
                 alert("wrong, correct answer is " + gameQuestions[liIndex].choices[gameQuestions[liIndex].correctAnswer]);
                 wrongAnswer();
-             
-
             }
-
+            gameQuestions[liIndex].answered = true;
         });
     });
 });
