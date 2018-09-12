@@ -1,7 +1,7 @@
 $("document").ready(function () {
     var gameQuestions = [{
         question: 'How many licks to a center of a tootsie pop?',
-        choices: ['1', '100', '400', '364'],
+        choices: ['1', '1252', '458', '364'],
         correctAnswer: 3
     }, {
         question: 'What is the only mammal that can truly fly?',
@@ -50,7 +50,7 @@ $("document").ready(function () {
 
     // timer for the question form when user clicks the start button
     $("#start").on("click", function () {
-        var number = 61;
+        var number = 321654621321;
         var intervalId;
         var correct = 0;
         var wrong = 0;
@@ -101,11 +101,14 @@ $("document").ready(function () {
 
             if (spanIndex === gameQuestions[liIndex].correctAnswer) {
                 correctAnswer();
-                console.log("Correct");
+                alert("correct");
+                $("#10").hide();
+                
 
             } else {
                 alert("wrong, correct answer is " + gameQuestions[liIndex].choices[gameQuestions[liIndex].correctAnswer]);
                 wrongAnswer();
+                $("#20").hide();
 
             }
 
